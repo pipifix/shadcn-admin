@@ -5,6 +5,8 @@ import { z } from 'zod'
 import dayjs from 'dayjs'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/custom/button'
+// Todo: fix the version mismatch, current shadcn calendar wont work with react-datepicker, fix the initial focus
+
 import { Calendar } from '@/components/ui/calendar'
 import {
   Command,
@@ -12,7 +14,10 @@ import {
   CommandGroup,
   CommandInput,
   CommandItem,
+  CommandList,
 } from '@/components/ui/command'
+// Todo: Language selection via Mouse not available
+
 import {
   Form,
   FormControl,
@@ -32,14 +37,7 @@ import { toast } from '@/components/ui/use-toast'
 
 const languages = [
   { label: 'English', value: 'en' },
-  { label: 'French', value: 'fr' },
   { label: 'German', value: 'de' },
-  { label: 'Spanish', value: 'es' },
-  { label: 'Portuguese', value: 'pt' },
-  { label: 'Russian', value: 'ru' },
-  { label: 'Japanese', value: 'ja' },
-  { label: 'Korean', value: 'ko' },
-  { label: 'Chinese', value: 'zh' },
 ] as const
 
 const accountFormSchema = z.object({
@@ -178,27 +176,29 @@ export function AccountForm() {
                   <Command>
                     <CommandInput placeholder='Search language...' />
                     <CommandEmpty>No language found.</CommandEmpty>
-                    <CommandGroup>
-                      {languages.map((language) => (
-                        <CommandItem
-                          value={language.label}
-                          key={language.value}
-                          onSelect={() => {
-                            form.setValue('language', language.value)
-                          }}
-                        >
-                          <CheckIcon
-                            className={cn(
-                              'mr-2 h-4 w-4',
-                              language.value === field.value
-                                ? 'opacity-100'
-                                : 'opacity-0'
-                            )}
-                          />
-                          {language.label}
-                        </CommandItem>
-                      ))}
-                    </CommandGroup>
+                    <CommandList>
+                      <CommandGroup>
+                        {languages.map((language) => (
+                          <CommandItem
+                            value={language.label}
+                            key={language.value}
+                            onSelect={() => {
+                              form.setValue('language', language.value)
+                            }}
+                          >
+                            <CheckIcon
+                              className={cn(
+                                'mr-2 h-4 w-4',
+                                language.value === field.value
+                                  ? 'opacity-100'
+                                  : 'opacity-0'
+                              )}
+                            />
+                            {language.label}
+                          </CommandItem>
+                        ))}
+                      </CommandGroup>
+                    </CommandList>
                   </Command>
                 </PopoverContent>
               </Popover>
