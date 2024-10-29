@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { IconEye, IconEyeOff } from '@tabler/icons-react'
-import { Button } from './button'
+import { Button } from '@/components/custom/custom-button'
 import { cn } from '@/lib/utils'
 
 export interface PasswordInputProps
@@ -14,7 +14,7 @@ const PasswordInput = React.forwardRef<HTMLInputElement, PasswordInputProps>(
         <input
           type={showPassword ? 'text' : 'password'}
           className={cn(
-            'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
+            'flex h-9 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:font-medium file:text-sm placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}
           ref={ref}

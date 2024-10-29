@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
+// TODO: Add a Footer to this layout
 
 const LayoutContext = React.createContext<{
   offset: number
@@ -62,7 +63,7 @@ const Header = React.forwardRef<HTMLDivElement, HeaderProps>(
         ref={ref}
         data-layout='header'
         className={cn(
-          `z-10 flex h-[var(--header-height)] items-center gap-4 bg-background p-4 md:px-8`,
+          `border-box z-10 flex h-[var(--header-height)] items-center justify-between gap-4 border-b bg-sidebar p-3 md:px-8`,
           contextVal.offset > 10 && sticky ? 'shadow' : 'shadow-none',
           contextVal.fixed && 'flex-none',
           sticky && 'sticky top-0',

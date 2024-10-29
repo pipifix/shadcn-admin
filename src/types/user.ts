@@ -15,6 +15,7 @@ export type User = {
   accountType?: ('Basiskonto' | 'Businesskonto') | undefined
   apps: string[] | undefined
   roles: string[] | undefined
+  rights: string[] | undefined
   isLoggedIn?: boolean | undefined
 
   organization_Id?: string | undefined

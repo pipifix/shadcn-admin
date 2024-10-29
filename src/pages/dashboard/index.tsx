@@ -1,5 +1,8 @@
 import { Layout } from '@/components/custom/layout'
-import { Button } from '@/components/custom/button'
+import { Button } from '@/components/ui/button'
+import DummyContent from '@/components/custom/dummy-content'
+import ComingSoon from '@/components/custom/coming-soon'
+
 import {
   Card,
   CardContent,
@@ -7,31 +10,24 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { Search } from '@/components/search'
+
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import ThemeSwitch from '@/components/theme-switch'
-import { TopNav } from '@/components/top-nav'
-import { UserNav } from '@/components/user-nav'
 import { RecentSales } from './components/recent-sales'
 import { Overview } from './components/overview'
+import AppHeader from '@/components/host-headercomponents/app-header'
 
 export default function Dashboard() {
   return (
     <Layout>
       {/* ===== Top Heading ===== */}
       <Layout.Header>
-        <TopNav links={topNav} />
-        <div className='ml-auto flex items-center space-x-4'>
-          <Search />
-          <ThemeSwitch />
-          <UserNav />
-        </div>
+        <AppHeader />
       </Layout.Header>
 
       {/* ===== Main ===== */}
       <Layout.Body>
         <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='text-2xl font-bold tracking-tight'>Dashboard</h1>
+          <h1 className='font-bold text-2xl tracking-tight'>Dashboard</h1>
           <div className='flex items-center space-x-2'>
             <Button>Download</Button>
           </div>
@@ -50,10 +46,19 @@ export default function Dashboard() {
             </TabsList>
           </div>
           <TabsContent value='overview' className='space-y-4'>
+            <DummyContent title='Overview' />
+          </TabsContent>
+          <TabsContent value='notifications' className='space-y-4'>
+            <ComingSoon title='notification' />
+          </TabsContent>
+          <TabsContent value='reports' className='space-y-4'>
+            <DummyContent title='Reports' />
+          </TabsContent>
+          <TabsContent value='analytics' className='space-y-4'>
             <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-4'>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                  <CardTitle className='text-sm font-medium'>
+                  <CardTitle className='font-medium text-sm'>
                     Total Revenue
                   </CardTitle>
                   <svg
@@ -70,7 +75,7 @@ export default function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold'>$45,231.89</div>
+                  <div className='font-bold text-2xl'>$45,231.89</div>
                   <p className='text-xs text-muted-foreground'>
                     +20.1% from last month
                   </p>
@@ -78,7 +83,7 @@ export default function Dashboard() {
               </Card>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                  <CardTitle className='text-sm font-medium'>
+                  <CardTitle className='font-medium text-sm'>
                     Subscriptions
                   </CardTitle>
                   <svg
@@ -97,7 +102,7 @@ export default function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold'>+2350</div>
+                  <div className='font-bold text-2xl'>+2350</div>
                   <p className='text-xs text-muted-foreground'>
                     +180.1% from last month
                   </p>
@@ -105,7 +110,7 @@ export default function Dashboard() {
               </Card>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                  <CardTitle className='text-sm font-medium'>Sales</CardTitle>
+                  <CardTitle className='font-medium text-sm'>Sales</CardTitle>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -121,7 +126,7 @@ export default function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold'>+12,234</div>
+                  <div className='font-bold text-2xl'>+12,234</div>
                   <p className='text-xs text-muted-foreground'>
                     +19% from last month
                   </p>
@@ -129,7 +134,7 @@ export default function Dashboard() {
               </Card>
               <Card>
                 <CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
-                  <CardTitle className='text-sm font-medium'>
+                  <CardTitle className='font-medium text-sm'>
                     Active Now
                   </CardTitle>
                   <svg
@@ -146,7 +151,7 @@ export default function Dashboard() {
                   </svg>
                 </CardHeader>
                 <CardContent>
-                  <div className='text-2xl font-bold'>+573</div>
+                  <div className='font-bold text-2xl'>+573</div>
                   <p className='text-xs text-muted-foreground'>
                     +201 since last hour
                   </p>
@@ -180,26 +185,3 @@ export default function Dashboard() {
     </Layout>
   )
 }
-
-const topNav = [
-  {
-    title: 'Overview',
-    href: 'dashboard/overview',
-    isActive: true,
-  },
-  {
-    title: 'Customers',
-    href: 'dashboard/customers',
-    isActive: false,
-  },
-  {
-    title: 'Products',
-    href: 'dashboard/products',
-    isActive: false,
-  },
-  {
-    title: 'Settings',
-    href: 'dashboard/settings',
-    isActive: false,
-  },
-]

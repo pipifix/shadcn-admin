@@ -41,7 +41,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     lazy: async () => {
-      const AppShell = await import('./components/app-shell')
+      const AppShell = await import('@/components/app-shell')
       return { Component: AppShell.default }
     },
     errorElement: <GeneralError />,
@@ -49,87 +49,97 @@ const router = createBrowserRouter([
       {
         index: true,
         lazy: async () => ({
-          Component: (await import('./pages/dashboard')).default,
+          Component: (await import('@/pages/dashboard')).default,
         }),
       },
       {
         path: 'tasks',
         lazy: async () => ({
-          Component: (await import('@/pages/tasks')).default,
+          Component: (await import('@/pages/profile/tasks')).default,
         }),
       },
       {
-        path: 'chats',
+        path: 'addressbook',
         lazy: async () => ({
-          Component: (await import('@/pages/chats')).default,
+          Component: (await import('@/pages/module-addressbook/contacts'))
+            .default,
         }),
       },
       {
-        path: 'apps',
+        path: '/demo/chats',
         lazy: async () => ({
-          Component: (await import('@/pages/apps')).default,
+          Component: (await import('@/pages/demo/chats/index.tsx')).default,
         }),
       },
       {
-        path: 'users',
+        path: '/demo/apps',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/pages/demo/apps/index.tsx')).default,
         }),
       },
       {
-        path: 'analysis',
+        path: '/crypto/encryption',
         lazy: async () => ({
-          Component: (await import('@/components/coming-soon')).default,
+          Component: (await import('@/pages/module-crypto/encryption')).default,
         }),
       },
       {
-        path: 'extra-components',
+        path: '/crypto/decryption',
         lazy: async () => ({
-          Component: (await import('@/pages/extra-components')).default,
+          Component: (await import('@/pages/module-crypto/decryption')).default,
+        }),
+      },
+
+      {
+        path: '/demo/extra-components',
+        lazy: async () => ({
+          Component: (await import('@/pages/demo/extra-components/index.tsx'))
+            .default,
         }),
       },
       {
-        path: 'settings',
+        path: 'profile',
         lazy: async () => ({
-          Component: (await import('./pages/settings')).default,
+          Component: (await import('./pages/profile')).default,
         }),
         errorElement: <GeneralError />,
         children: [
           {
             index: true,
             lazy: async () => ({
-              Component: (await import('./pages/settings/profile')).default,
-            }),
-          },
-          {
-            path: 'account',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/account')).default,
-            }),
-          },
-          {
-            path: 'appearance',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/appearance')).default,
-            }),
-          },
-          {
-            path: 'notifications',
-            lazy: async () => ({
-              Component: (await import('./pages/settings/notifications'))
+              Component: (await import('./pages/profile/profilesettings'))
                 .default,
             }),
           },
           {
-            path: 'display',
+            path: '/profile/account',
             lazy: async () => ({
-              Component: (await import('./pages/settings/display')).default,
+              Component: (await import('./pages/profile/account')).default,
             }),
           },
           {
-            path: 'error-example',
+            path: '/profile/appearance',
             lazy: async () => ({
-              Component: (await import('./pages/settings/error-example'))
+              Component: (await import('./pages/profile/appearance')).default,
+            }),
+          },
+          {
+            path: '/profile/notifications',
+            lazy: async () => ({
+              Component: (await import('./pages/profile/notifications'))
+                .default,
+            }),
+          },
+          {
+            path: '/profile/display',
+            lazy: async () => ({
+              Component: (await import('./pages/profile/display')).default,
+            }),
+          },
+          {
+            path: '/profile/error-example',
+            lazy: async () => ({
+              Component: (await import('./pages/profile/error-example'))
                 .default,
             }),
             errorElement: <GeneralError className='h-[50svh]' minimal />,
