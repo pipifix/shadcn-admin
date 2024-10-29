@@ -1,14 +1,17 @@
 import { AppearanceForm } from './appearance-form'
 import ContentSection from '../components/content-section'
+import { Card } from '@/components/ui/card'
 
 export default function SettingsAppearance() {
   return (
-    <ContentSection
-      title='Appearance'
-      desc='Customize the appearance of the app. Automatically switch between day
+    <Card className='p-5'>
+      <ContentSection
+        title='Appearance'
+        desc='Customize the appearance of the app. Automatically switch between day
           and night themes.'
-    >
-      <AppearanceForm />
-    </ContentSection>
+      >
+        <AppearanceForm />
+      </ContentSection>
+    </Card>
   )
 }
